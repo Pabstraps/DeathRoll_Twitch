@@ -1,0 +1,18 @@
+{
+  "name": "deathroll-bot",
+  "version": "1.0.0",
+  "description": "Bot de Deathroll para Twitch",
+  "main": "deathroll.js",
+  "scripts": {
+    "start": "node deathroll.js",
+    "dev": "node --watch deathroll.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "tmi.js": "^1.8.5"
+  },
+  "license": "MIT"
+}
