@@ -2,6 +2,9 @@ require('dotenv').config();
 
 const tmi = require('tmi.js');
 const { randomInt } = require('crypto');
+// 🎯 NÚMEROS ESPECIALES
+const WIN_NUMBER = 69;   // el que lo saca gana automáticamente
+const LOSE_NUMBER = 67;  // el que lo saca pierde directo
 
 // ⚙️ CONFIG
 // Lee un número del .env; si no existe o es inválido, usa el valor por defecto
@@ -204,9 +207,27 @@ const commands = {
     // crypto.randomInt: aleatorio uniforme y no predecible
     const roll = randomInt(1, game.value + 1);
 
+    // crypto.randomInt: aleatorio uniforme y no predecible
+    const roll = randomInt(1, game.value + 1);
+    const opponent = user === game.p1 ? game.p2 : game.p1;
+
+    // 🎉 69: victoria automática
+    if (roll === WIN_NUMBER) {
+      say(`🎲 ${user} tiró → ${roll} 😏 | 🏆 ¡${user} GANA automáticamente!`);
+      resetGame();
+      return;
+    }
+
+    // ☠️ 67: derrota directa
+    if (roll === LOSE_NUMBER) {
+      say(`🎲 ${user} tiró → ${roll} 💀 | ${user} PERDIÓ directo. 🏆 Gana ${opponent}`);
+      resetGame();
+      return;
+    }
+
+    // Regla clásica: sacar 1 pierde
     if (roll === 1) {
-      const winner = user === game.p1 ? game.p2 : game.p1;
-      say(`🎲 ${user} tiró → 1 | 💀 ${user} PERDIÓ. 🏆 Gana ${winner}`);
+      say(`🎲 ${user} tiró → 1 | 💀 ${user} PERDIÓ. 🏆 Gana ${opponent}`);
       resetGame();
       return;
     }
