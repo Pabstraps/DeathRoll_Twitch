@@ -206,9 +206,6 @@ const commands = {
 
     // crypto.randomInt: aleatorio uniforme y no predecible
     const roll = randomInt(1, game.value + 1);
-
-    // crypto.randomInt: aleatorio uniforme y no predecible
-    const roll = randomInt(1, game.value + 1);
     const opponent = user === game.p1 ? game.p2 : game.p1;
 
     // 🎉 69: victoria automática
